@@ -23,6 +23,8 @@ function SpeedMeter ({route, navigation}) {
   const { titulo, imc, idade, genero } = route.params
 
   let rotateAnimed = new Animated.Value(0)
+
+  
   
   const startRotateAnimed = () =>{
     rotateAnimed.setValue(0)
@@ -76,7 +78,7 @@ function SpeedMeter ({route, navigation}) {
         <Text style={[{fontWeight:'bold'},Styles.textList]}>Diferença</Text></View>
 
         <View style={Styles.speedResultText}><Text style={{fontSize: 20, color:color}}>{name}</Text> 
-        <Text style={{fontSize: 20, color:color}}>{categoria.def()}</Text></View>
+        <Text style={{fontSize: 20, color:color}}>{}</Text></View>
 
       <View style={{borderBottomColor:'black', borderBottomWidth:1, marginTop:'5%', marginBottom:'5%'}}></View>
 
@@ -95,14 +97,14 @@ function SpeedMeter ({route, navigation}) {
         <View style={Styles.speedResultText}><Text style={sobrepeso}>Sobrepeso</Text> 
         <Text style={[Styles.textList, sobrepeso]}>25.0 - 29.9</Text></View>
 
-        <View style={Styles.speedResultText}><Text style={grauUm}>{Tabela(imc).adultos.grauUm.texto}</Text> 
-        <Text style={[Styles.textList, grauUm]}>{Tabela(imc).adultos.grauUm.valor}</Text></View>
+        <View style={Styles.speedResultText}><Text style={grauUm}>{grauUm.name}</Text> 
+        <Text style={[Styles.textList, grauUm]}>{grauUm.valor}</Text></View>
 
         <View style={Styles.speedResultText}><Text style={grauDois}>Obesidade Grau II</Text> 
         <Text style={[Styles.textList, grauDois]}>35.0 - 39.9</Text></View>
 
-        <View style={Styles.speedResultText}><Text style={grauTres}>{Tabela(imc).adultos.grauTres.texto}</Text> 
-        <Text style={[Styles.textList, grauTres]}>{Tabela(imc).adultos.grauTres.valor}</Text></View>
+        <View style={Styles.speedResultText}><Text style={grauTres}>{}</Text> 
+        <Text style={[Styles.textList, grauTres]}>{}</Text></View>
 
         <View style={{borderBottomColor:'black', borderBottomWidth:1, marginTop:'5%', marginBottom:'5%'}}></View>
 
