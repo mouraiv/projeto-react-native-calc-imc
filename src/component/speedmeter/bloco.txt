@@ -1,0 +1,26 @@
+<View style={Styles.speedResultText}><Text style={[Styles.textList, innerColor.grave]}>Magreza grave</Text> 
+        <Text style={[Styles.textList, innerColor.grave]}>15.9</Text></View>
+
+        <View style={Styles.speedResultText}><Text style={innerColor.moderado}>Magreza moderada</Text> 
+        <Text style={[Styles.textList, innerColor.moderado]}>16.0 - 18.4</Text></View>
+
+        <View style={Styles.speedResultText}><Text style={innerColor.leve}>Magreza leve</Text> 
+        <Text style={[Styles.textList, innerColor.leve]}>17.0 - 18.4</Text></View>
+
+        <View style={Styles.speedResultText}><Text style={innerColor.saudavel}>Saudável</Text> 
+        <Text style={[Styles.textList, innerColor.saudavel]}>18.5 - 24.9</Text></View>
+
+        <View style={Styles.speedResultText}><Text style={innerColor.sobrepeso}>Sobrepeso</Text> 
+        <Text style={[Styles.textList, innerColor.sobrepeso]}>25.0 - 29.9</Text></View>
+
+
+        <View style={Styles.speedResultText}><Text style={innerColor.grauDois}>Obesidade Grau II</Text> 
+        <Text style={[Styles.textList, innerColor.grauDois]}>35.0 - 39.9</Text></View>
+
+        <View style={Styles.speedResultText}><Text style={innerColor.grauTres}>Obesidade Grau III</Text> 
+        <Text style={[Styles.textList, innerColor.grauTres]}>40.0</Text></View>
+
+        <View style={{borderBottomColor:'black', borderBottomWidth:1, marginTop:'5%', marginBottom:'5%'}}></View>
+
+        <View style={Styles.speedResultText}><Text style={[Styles.textList, {}]}>vazio</Text> 
+        <Text style={[Styles.textList, {}]}>vazio</Text></View>
