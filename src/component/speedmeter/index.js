@@ -83,28 +83,28 @@ function SpeedMeter ({route, navigation}) {
 
       <View style={{borderBottomColor:'black', borderBottomWidth:1, marginTop:'5%', marginBottom:'5%'}}></View>
 
-        <View style={Styles.speedResultText}>{idade < 16 ? <Text style={grave}>{Tabela(imc)[genero][idade].grave.texto}</Text> : <Text style={[Styles.textList, grave]}>{Tabela(imc).adultos.grave.texto}</Text>}
+        <View style={Styles.speedResultText}>{idade < 16 ? <Text style={[Styles.textList, grave]}>{Tabela(imc)[genero][idade].grave.texto}</Text> : <Text style={[Styles.textList, grave]}>{Tabela(imc).adultos.grave.texto}</Text>}
         {idade < 16 ? <Text style={[Styles.textList, grave]}> {Tabela(imc)[genero][idade].grave.valor}</Text> : <Text style={[Styles.textList, grave]}>{Tabela(imc).adultos.grave.valor}</Text>}</View>
 
-        <View style={Styles.speedResultText}>{idade < 16 ? null : <Text style={moderado}>{Tabela(imc).adultos.moderado.texto}</Text> }
+        <View style={Styles.speedResultText}>{idade < 16 ? null : <Text style={[Styles.textList, moderado]}>{Tabela(imc).adultos.moderado.texto}</Text> }
         {idade < 16 ? null : <Text style={[Styles.textList, moderado]}>{Tabela(imc).adultos.moderado.valor}</Text>}</View>
 
-        <View style={Styles.speedResultText}>{idade < 16 ? null : <Text style={leve}>{Tabela(imc).adultos.leve.texto}</Text>} 
+        <View style={Styles.speedResultText}>{idade < 16 ? null : <Text style={[Styles.textList, leve]}>{Tabela(imc).adultos.leve.texto}</Text>} 
         {idade < 16 ? null : <Text style={[Styles.textList, leve]}>{Tabela(imc).adultos.leve.valor}</Text>}</View>
 
-        <View style={Styles.speedResultText}>{idade < 16 ? <Text style={saudavel}>{Tabela(imc)[genero][idade].saudavel.texto}</Text> : <Text style={saudavel}>{Tabela(imc).adultos.saudavel.texto}</Text>} 
+        <View style={Styles.speedResultText}>{idade < 16 ? <Text style={[Styles.textList, saudavel]}>{Tabela(imc)[genero][idade].saudavel.texto}</Text> : <Text style={[Styles.textList, saudavel]}>{Tabela(imc).adultos.saudavel.texto}</Text>} 
         {idade < 16 ? <Text style={[Styles.textList, saudavel]}>{Tabela(imc)[genero][idade].saudavel.valor}</Text> : <Text style={[Styles.textList, saudavel]}>{Tabela(imc).adultos.saudavel.valor}</Text>}</View>
 
-        <View style={Styles.speedResultText}>{idade < 16 ? <Text style={sobrepeso}>{Tabela(imc)[genero][idade].sobrepeso.texto}</Text> : <Text style={sobrepeso}>{Tabela(imc).adultos.sobrepeso.texto}</Text>} 
+        <View style={Styles.speedResultText}>{idade < 16 ? <Text style={[Styles.textList, sobrepeso]}>{Tabela(imc)[genero][idade].sobrepeso.texto}</Text> : <Text style={[Styles.textList, sobrepeso]}>{Tabela(imc).adultos.sobrepeso.texto}</Text>} 
         {idade < 16 ? <Text style={[Styles.textList, sobrepeso]}>{Tabela(imc)[genero][idade].sobrepeso.valor}</Text> : <Text style={[Styles.textList, sobrepeso]}>{Tabela(imc).adultos.sobrepeso.valor}</Text>}</View>
 
-        <View style={Styles.speedResultText}>{idade < 16 ? <Text style={grauUm}>{Tabela(imc)[genero][idade].grauUm.texto}</Text> : <Text style={grauUm}>{Tabela(imc).adultos.grauUm.texto}</Text>} 
+        <View style={Styles.speedResultText}>{idade < 16 ? <Text style={[Styles.textList, grauUm]}>{Tabela(imc)[genero][idade].grauUm.texto}</Text> : <Text style={[Styles.textList, grauUm]}>{Tabela(imc).adultos.grauUm.texto}</Text>} 
         {idade < 16 ? <Text style={[Styles.textList, grauUm]}>{Tabela(imc)[genero][idade].grauUm.valor}</Text> : <Text style={[Styles.textList, grauUm]}>{Tabela(imc).adultos.grauUm.valor}</Text>}</View>
 
-        <View style={Styles.speedResultText}>{idade < 16 ? null : <Text style={grauDois}>{Tabela(imc).adultos.grauDois.texto}</Text>} 
+        <View style={Styles.speedResultText}>{idade < 16 ? null : <Text style={[Styles.textList, grauDois]}>{Tabela(imc).adultos.grauDois.texto}</Text>} 
         {idade < 16 ? null : <Text style={[Styles.textList, grauDois]}>{Tabela(imc).adultos.grauDois.valor}</Text>}</View>
 
-        <View style={Styles.speedResultText}>{idade < 16 ? null : <Text style={grauTres}>{Tabela(imc).adultos.grauTres.texto}</Text>} 
+        <View style={Styles.speedResultText}>{idade < 16 ? null : <Text style={[Styles.textList, grauTres]}>{Tabela(imc).adultos.grauTres.texto}</Text>} 
         {idade < 16 ? null : <Text style={[Styles.textList, grauTres]}>{Tabela(imc).adultos.grauTres.valor}</Text>}</View>
 
       <View style={{borderBottomColor:'black', borderBottomWidth:1, marginTop:'5%', marginBottom:'5%'}}></View>
@@ -175,10 +175,9 @@ const Styles = StyleSheet.create({
   speedResultText:{
     flexDirection:'row', 
     justifyContent:'space-between',
-    marginTop:'2%'
   },
   textList:{
-    fontSize: 15,
+    fontSize: 16,
     color:'black'
   }
 });
