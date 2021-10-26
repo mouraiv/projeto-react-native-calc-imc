@@ -7,7 +7,7 @@ import {
   TouchableHighlight
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Foundation';
 
 export const Tabela = (result) => {
 
