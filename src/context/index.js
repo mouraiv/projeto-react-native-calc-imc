@@ -7,6 +7,8 @@ const initialValue = {
     categoria: {
         name: '',
         color: 'rgb(0, 0, 0)',
+        normal: '',
+        def : 0,
         grave : {},
         moderado : {},
         leve : {},
@@ -15,7 +17,6 @@ const initialValue = {
         grauUm : {},
         grauDois : {},
         grauTres : {},
-        def(){return 0}
     },
 }
 

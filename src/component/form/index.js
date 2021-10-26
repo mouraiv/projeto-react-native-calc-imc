@@ -104,7 +104,7 @@ export const Tabela = (result) => {
     return data
   }
 
-export function Validate(result, idade, genero, dispatch, finished){
+export function Validate(result, idade, genero, peso, dispatch, finished){
   
   if(idade < 16){
     console.log("ok")
@@ -134,7 +134,7 @@ export function Validate(result, idade, genero, dispatch, finished){
       finished ? dispatch({ type: 'UPDATE_NIVEL', 
       payload : { name: Tabela(result)[genero][idade].grauUm.texto, color: 'rgb(255, 140, 0)',
       grauUm : {color:'rgb(255, 140, 0)', fontWeight:'bold'}, 
-      def(){return "+"+(result - 80)}}}) : '';
+      }}) : '';
       //def(){return "+"+(imc - 25.0)}
   
     }
@@ -144,60 +144,61 @@ export function Validate(result, idade, genero, dispatch, finished){
   if(result < 16.0){
     dispatch({ type: 'UPDATE_VALUE', payload : 145}) 
     finished ? dispatch({ type: 'UPDATE_NIVEL', 
-    payload : { name: Tabela(result).adultos.grave.texto, color: 'rgb(255, 0, 0)', 
+    payload : { name: Tabela(result).adultos.grave.texto, color: 'rgb(255, 0, 0)',
+    normal: '66.7 - 90.0 kg', def: (peso - 90.0), 
     grave : {color:'rgb(255, 0, 0)', fontWeight:'bold'}}}) : '';
-    //def(){return "+"+(imc - 25.0)}
 
   }else if(result > 15.9 && result < 18.5){
     dispatch({ type: 'UPDATE_VALUE', payload : 50}) 
     finished ? dispatch({ type: 'UPDATE_NIVEL', 
     payload : { name: Tabela(result).adultos.moderado.texto, color: 'rgb(255,215,0)',
+    normal: '66.7 - 90.0 kg', def: (peso - 90.0),
     moderado : {color:'rgb(255,215,0)', fontWeight:'bold'}}}) : '';
-    //def(){return "+"+(imc - 25.0)}
     
   }else if(result > 16.9 && result < 18.5){
     dispatch({ type: 'UPDATE_VALUE', payload : 50}) 
     finished ? dispatch({ type: 'UPDATE_NIVEL', 
     payload : { name: Tabela(result).adultos.leve.texto, color: 'rgb(255,215,0)',
+    normal: '66.7 - 90.0 kg', def: (peso - 90.0),
     leve : {color:'rgb(255,215,0)', fontWeight:'bold'}}}) : '';
-    //def(){return "+"+(imc - 25.0)}
     
   }else if(result > 18.4 && result < 25.0){
     dispatch({ type: 'UPDATE_VALUE', payload : 0}) 
     finished ? dispatch({ type: 'UPDATE_NIVEL', 
     payload : { name: Tabela(result).adultos.saudavel.texto, color: 'rgb(50,205,50)',
+    normal: '66.7 - 90.0 kg', def: (peso - 90.0),
     saudavel : {color:'rgb(50,205,50)', fontWeight:'bold'}}}) : '';
-    //def(){return "+"+(imc - 25.0)}
    
   }else if(result > 24.9 && result < 30.0){
     dispatch({ type: 'UPDATE_VALUE', payload : 99}) 
     finished ? dispatch({ type: 'UPDATE_NIVEL', 
     payload : { name: Tabela(result).adultos.sobrepeso.texto, color: 'rgb(255, 140, 0)',
+    normal: '66.7 - 90.0 kg', def: (peso - 90.0),
     sobrepeso : {color:'rgb(255, 140, 0)', fontWeight:'bold'}}}) : '';
-    //def(){return "+"+(imc - 25.0)}
 
   }else if(Tabela(result).adultos.grauUm.condicao){
     dispatch({ type: 'UPDATE_VALUE', payload : 99}) 
     finished ? dispatch({ type: 'UPDATE_NIVEL', 
     payload : { name: Tabela(result).adultos.grauUm.texto, color: 'rgb(255, 140, 0)',
+    normal: '66.7 - 90.0 kg', def: (peso - 90.0),
     grauUm : {color:'rgb(255, 140, 0)', fontWeight:'bold'}, 
-    def(){return "+"+(result - 80)}}}) : '';
-    //def(){return "+"+(imc - 25.0)}
+    }}) : '';
 
   }else if(result > 34.9 && result < 40.0){
     dispatch({ type: 'UPDATE_VALUE', payload : 145}) 
     finished ? dispatch({ type: 'UPDATE_NIVEL', 
     payload : { name: Tabela(result).adultos.grauDois.texto, color: 'rgb(255, 0, 0)',
-    grauDois : {color:'rgb(255, 0, 0)', fontWeight:'bold'}}}) : '';
-    //def(){return "+"+(imc - 25.0)}
+    normal: '66.7 - 90.0 kg', def: (peso - 90.0),
+    grauDois : {color:'rgb(255, 0, 0)', fontWeight:'bold'},
+    }}) : '';
 
   }else if(Tabela(result).adultos.grauTres.condicao){
     dispatch({ type: 'UPDATE_VALUE', payload : 145}) 
     finished ? dispatch({ type: 'UPDATE_NIVEL', 
-    payload : { name: Tabela(result).adultos.grauTres.texto, color: 'rgb(255, 0, 0)', 
+    payload : { name: Tabela(result).adultos.grauTres.texto, color: 'rgb(255, 0, 0)',
+    normal: '66.7 - 90.0 kg', def: (peso - 90.0), 
     grauTres : {color:'rgb(255, 0, 0)', fontWeight:'bold'},
-    def(){return "+"+(result - 0)}}}) : '';
-    //def(){return "+"+(imc - 25.0)}
+    }}) : '';
     }
   }
 
@@ -219,6 +220,7 @@ export default function Form ({ navigation }) {
   const calcImc = () =>{
     const imc = (peso / (altura * altura))
     setResult(imc.toFixed(1))
+    console.log((imc - 29).toFixed(1))
   }
 
   const validateForms = () => {
@@ -240,7 +242,8 @@ export default function Form ({ navigation }) {
       titulo : 'CALCULADORA IMC PRO',
       imc: result,
       idade: idade,
-      genero: genero
+      genero: genero,
+      peso: peso
     });
     }
   },[result])

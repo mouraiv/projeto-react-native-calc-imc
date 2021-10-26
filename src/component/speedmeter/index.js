@@ -17,10 +17,10 @@ import { Validate, Tabela } from '../../component/form/'
 function SpeedMeter ({route, navigation}) {
 
   const { state: {value, categoria}, dispatch } = useContext(ValidContext)
-  const { name, color, grave, moderado, leve, saudavel, 
+  const { name, color, normal, def,  grave, moderado, leve, saudavel, 
           sobrepeso, grauUm, grauDois, grauTres } = categoria
 
-  const { titulo, imc, idade, genero } = route.params
+  const { titulo, imc, idade, genero, peso } = route.params
 
 
   let rotateAnimed = new Animated.Value(0)
@@ -35,7 +35,7 @@ function SpeedMeter ({route, navigation}) {
       easing: Easing.linear,
       useNativeDriver: false
     }).start(({finished})=>{
-            Validate(imc, idade, genero, dispatch, finished)
+            Validate(imc, idade, genero, peso, dispatch, finished)
     })
   }
 
@@ -79,7 +79,7 @@ function SpeedMeter ({route, navigation}) {
         <Text style={[{fontWeight:'bold'},Styles.textList]}>Diferença</Text></View>
 
         <View style={Styles.speedResultText}><Text style={{fontSize: 20, color:color}}>{name}</Text> 
-        <Text style={{fontSize: 20, color:color}}>{}</Text></View>
+        <Text style={{fontSize: 20, color:color}}>{def+".0 kg"}</Text></View>
 
       <View style={{borderBottomColor:'black', borderBottomWidth:1, marginTop:'5%', marginBottom:'5%'}}></View>
 
@@ -109,8 +109,8 @@ function SpeedMeter ({route, navigation}) {
 
       <View style={{borderBottomColor:'black', borderBottomWidth:1, marginTop:'5%', marginBottom:'5%'}}></View>
 
-        <View style={Styles.speedResultText}><Text style={[Styles.textList, {}]}>vazio</Text> 
-        <Text style={[Styles.textList, {}]}>vazio</Text></View>
+        <View style={Styles.speedResultText}><Text style={[Styles.textList, {}]}>Peso normal</Text> 
+        <Text style={[Styles.textList, {}]}>{normal}</Text></View>
 
       </View>  
   
