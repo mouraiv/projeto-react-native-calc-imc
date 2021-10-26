@@ -8,6 +8,8 @@ import {
   Dimensions
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/Entypo';
+
 import { ValidContext } from '../../context/'
 import Svg, { Path } from 'react-native-svg';
 import Speed from '../../assets/speed.svg'
@@ -79,7 +81,7 @@ function SpeedMeter ({route, navigation}) {
         <Text style={[{fontWeight:'bold'},Styles.textList]}>Diferença</Text></View>
 
         <View style={Styles.speedResultText}><Text style={{fontSize: 20, color:color}}>{name}</Text> 
-        <Text style={{fontSize: 20, color:color}}>{def+".0 kg"}</Text></View>
+        <Text style={{fontSize: 20, color:color}}>{saudavel ?  <Icon name="check" size={30} /> : (def).toFixed(1)+" kg"}</Text></View>
 
       <View style={{borderBottomColor:'black', borderBottomWidth:1, marginTop:'5%', marginBottom:'5%'}}></View>
 

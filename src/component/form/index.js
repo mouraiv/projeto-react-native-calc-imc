@@ -113,21 +113,18 @@ export function Validate(result, idade, genero, peso, dispatch, finished){
       finished ? dispatch({ type: 'UPDATE_NIVEL', 
       payload : { name: Tabela(result)[genero][idade].grave.texto, color: 'rgb(255, 0, 0)', 
       grave : {color:'rgb(255, 0, 0)', fontWeight:'bold'}}}) : '';
-      //def(){return "+"+(imc - 25.0)}
   
     }else if(Tabela(result)[genero][idade].saudavel.condicao){
       dispatch({ type: 'UPDATE_VALUE', payload : 0}) 
       finished ? dispatch({ type: 'UPDATE_NIVEL', 
       payload : { name: Tabela(result)[genero][idade].saudavel.texto, color: 'rgb(50,205,50)',
       saudavel : {color:'rgb(50,205,50)', fontWeight:'bold'}}}) : '';
-      //def(){return "+"+(imc - 25.0)}
      
     }else if(Tabela(result)[genero][idade].sobrepeso.condicao){
       dispatch({ type: 'UPDATE_VALUE', payload : 99}) 
       finished ? dispatch({ type: 'UPDATE_NIVEL', 
       payload : { name: Tabela(result)[genero][idade].sobrepeso.texto, color: 'rgb(255, 140, 0)',
       sobrepeso : {color:'rgb(255, 140, 0)', fontWeight:'bold'}}}) : '';
-      //def(){return "+"+(imc - 25.0)}
   
     }else if(Tabela(result)[genero][idade].grauUm.condicao){
       dispatch({ type: 'UPDATE_VALUE', payload : 99}) 
@@ -135,7 +132,6 @@ export function Validate(result, idade, genero, peso, dispatch, finished){
       payload : { name: Tabela(result)[genero][idade].grauUm.texto, color: 'rgb(255, 140, 0)',
       grauUm : {color:'rgb(255, 140, 0)', fontWeight:'bold'}, 
       }}) : '';
-      //def(){return "+"+(imc - 25.0)}
   
     }
    
@@ -145,21 +141,21 @@ export function Validate(result, idade, genero, peso, dispatch, finished){
     dispatch({ type: 'UPDATE_VALUE', payload : 145}) 
     finished ? dispatch({ type: 'UPDATE_NIVEL', 
     payload : { name: Tabela(result).adultos.grave.texto, color: 'rgb(255, 0, 0)',
-    normal: '66.7 - 90.0 kg', def: (peso - 90.0), 
+    normal: '66.7 - 90.0 kg', def: (peso - 66.7), 
     grave : {color:'rgb(255, 0, 0)', fontWeight:'bold'}}}) : '';
 
   }else if(result > 15.9 && result < 18.5){
     dispatch({ type: 'UPDATE_VALUE', payload : 50}) 
     finished ? dispatch({ type: 'UPDATE_NIVEL', 
     payload : { name: Tabela(result).adultos.moderado.texto, color: 'rgb(255,215,0)',
-    normal: '66.7 - 90.0 kg', def: (peso - 90.0),
+    normal: '66.7 - 90.0 kg', def: (peso - 66.7),
     moderado : {color:'rgb(255,215,0)', fontWeight:'bold'}}}) : '';
     
   }else if(result > 16.9 && result < 18.5){
     dispatch({ type: 'UPDATE_VALUE', payload : 50}) 
     finished ? dispatch({ type: 'UPDATE_NIVEL', 
     payload : { name: Tabela(result).adultos.leve.texto, color: 'rgb(255,215,0)',
-    normal: '66.7 - 90.0 kg', def: (peso - 90.0),
+    normal: '66.7 - 90.0 kg', def: (peso - 66.7),
     leve : {color:'rgb(255,215,0)', fontWeight:'bold'}}}) : '';
     
   }else if(result > 18.4 && result < 25.0){
@@ -220,7 +216,6 @@ export default function Form ({ navigation }) {
   const calcImc = () =>{
     const imc = (peso / (altura * altura))
     setResult(imc.toFixed(1))
-    console.log((imc - 29).toFixed(1))
   }
 
   const validateForms = () => {
