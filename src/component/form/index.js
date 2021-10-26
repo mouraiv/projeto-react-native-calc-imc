@@ -9,8 +9,6 @@ import {
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import { ValidContext } from '../../context/'
-
 export const Tabela = (result) => {
 
   const data = {
@@ -54,7 +52,8 @@ export const Tabela = (result) => {
         },
         grauUm: {texto: 'Obeso',
         valor: '18.0 ≥',
-        condicao: result >= 19.1}
+        condicao: result >= 19.1
+        }
       },
     },    
     mulheres: {
@@ -110,35 +109,31 @@ export function Validate(result, idade, genero, dispatch, finished){
   if(idade < 16){
     console.log("ok")
     if(Tabela(result)[genero][idade].grave.condicao){
-      console.log("abaixo")
       dispatch({ type: 'UPDATE_VALUE', payload : 145}) 
       finished ? dispatch({ type: 'UPDATE_NIVEL', 
       payload : { name: Tabela(result)[genero][idade].grave.texto, color: 'rgb(255, 0, 0)', 
-      grave : {name: Tabela(result)[genero][idade].grave.texto, valor: Tabela(result)[genero][idade].grave.valor ,color:'rgb(255, 0, 0)', fontWeight:'bold'}}}) : '';
+      grave : {color:'rgb(255, 0, 0)', fontWeight:'bold'}}}) : '';
       //def(){return "+"+(imc - 25.0)}
   
     }else if(Tabela(result)[genero][idade].saudavel.condicao){
-      console.log("saudavel")
       dispatch({ type: 'UPDATE_VALUE', payload : 0}) 
       finished ? dispatch({ type: 'UPDATE_NIVEL', 
       payload : { name: Tabela(result)[genero][idade].saudavel.texto, color: 'rgb(50,205,50)',
-      saudavel : {name: Tabela(result)[genero][idade].saudavel.texto, valor: Tabela(result)[genero][idade].saudavel.valor ,color:'rgb(50,205,50)', fontWeight:'bold'}}}) : '';
+      saudavel : {color:'rgb(50,205,50)', fontWeight:'bold'}}}) : '';
       //def(){return "+"+(imc - 25.0)}
      
     }else if(Tabela(result)[genero][idade].sobrepeso.condicao){
-      console.log("sobrepeso")
       dispatch({ type: 'UPDATE_VALUE', payload : 99}) 
       finished ? dispatch({ type: 'UPDATE_NIVEL', 
       payload : { name: Tabela(result)[genero][idade].sobrepeso.texto, color: 'rgb(255, 140, 0)',
-      sobrepeso : {name: Tabela(result)[genero][idade].sobrepeso.texto, valor: Tabela(result)[genero][idade].sobrepeso.valor ,color:'rgb(255, 140, 0)', fontWeight:'bold'}}}) : '';
+      sobrepeso : {color:'rgb(255, 140, 0)', fontWeight:'bold'}}}) : '';
       //def(){return "+"+(imc - 25.0)}
   
     }else if(Tabela(result)[genero][idade].grauUm.condicao){
-      console.log("grauUm")
       dispatch({ type: 'UPDATE_VALUE', payload : 99}) 
       finished ? dispatch({ type: 'UPDATE_NIVEL', 
       payload : { name: Tabela(result)[genero][idade].grauUm.texto, color: 'rgb(255, 140, 0)',
-      grauUm : {name: Tabela(result)[genero][idade].grauUm.texto, valor: Tabela(result)[genero][idade].grauUm.valor ,color:'rgb(255, 140, 0)', fontWeight:'bold'}, 
+      grauUm : {color:'rgb(255, 140, 0)', fontWeight:'bold'}, 
       def(){return "+"+(result - 80)}}}) : '';
       //def(){return "+"+(imc - 25.0)}
   
@@ -150,42 +145,42 @@ export function Validate(result, idade, genero, dispatch, finished){
     dispatch({ type: 'UPDATE_VALUE', payload : 145}) 
     finished ? dispatch({ type: 'UPDATE_NIVEL', 
     payload : { name: Tabela(result).adultos.grave.texto, color: 'rgb(255, 0, 0)', 
-    grave : {name: Tabela(result).adultos.grave.texto, valor: Tabela(result).adultos.grave.valor ,color:'rgb(255, 0, 0)', fontWeight:'bold'}}}) : '';
+    grave : {color:'rgb(255, 0, 0)', fontWeight:'bold'}}}) : '';
     //def(){return "+"+(imc - 25.0)}
 
   }else if(result > 15.9 && result < 18.5){
     dispatch({ type: 'UPDATE_VALUE', payload : 50}) 
     finished ? dispatch({ type: 'UPDATE_NIVEL', 
     payload : { name: Tabela(result).adultos.moderado.texto, color: 'rgb(255,215,0)',
-    moderado : {name: Tabela(result).adultos.moderado.texto, valor: Tabela(result).adultos.moderado.valor, color:'rgb(255,215,0)', fontWeight:'bold'}}}) : '';
+    moderado : {color:'rgb(255,215,0)', fontWeight:'bold'}}}) : '';
     //def(){return "+"+(imc - 25.0)}
     
   }else if(result > 16.9 && result < 18.5){
     dispatch({ type: 'UPDATE_VALUE', payload : 50}) 
     finished ? dispatch({ type: 'UPDATE_NIVEL', 
     payload : { name: Tabela(result).adultos.leve.texto, color: 'rgb(255,215,0)',
-    leve : {name: Tabela(result).adultos.leve.texto, valor: Tabela(result).adultos.leve.valor ,color:'rgb(255,215,0)', fontWeight:'bold'}}}) : '';
+    leve : {color:'rgb(255,215,0)', fontWeight:'bold'}}}) : '';
     //def(){return "+"+(imc - 25.0)}
     
   }else if(result > 18.4 && result < 25.0){
     dispatch({ type: 'UPDATE_VALUE', payload : 0}) 
     finished ? dispatch({ type: 'UPDATE_NIVEL', 
     payload : { name: Tabela(result).adultos.saudavel.texto, color: 'rgb(50,205,50)',
-    saudavel : {name: Tabela(result).adultos.saudavel.texto, valor: Tabela(result).adultos.saudavel.valor ,color:'rgb(50,205,50)', fontWeight:'bold'}}}) : '';
+    saudavel : {color:'rgb(50,205,50)', fontWeight:'bold'}}}) : '';
     //def(){return "+"+(imc - 25.0)}
    
   }else if(result > 24.9 && result < 30.0){
     dispatch({ type: 'UPDATE_VALUE', payload : 99}) 
     finished ? dispatch({ type: 'UPDATE_NIVEL', 
     payload : { name: Tabela(result).adultos.sobrepeso.texto, color: 'rgb(255, 140, 0)',
-    sobrepeso : {name: Tabela(result).adultos.sobrepeso.texto, valor: Tabela(result).adultos.sobrepeso.valor ,color:'rgb(255, 140, 0)', fontWeight:'bold'}}}) : '';
+    sobrepeso : {color:'rgb(255, 140, 0)', fontWeight:'bold'}}}) : '';
     //def(){return "+"+(imc - 25.0)}
 
   }else if(Tabela(result).adultos.grauUm.condicao){
     dispatch({ type: 'UPDATE_VALUE', payload : 99}) 
     finished ? dispatch({ type: 'UPDATE_NIVEL', 
     payload : { name: Tabela(result).adultos.grauUm.texto, color: 'rgb(255, 140, 0)',
-    grauUm : {name: Tabela(result).adultos.grauUm.texto, valor: Tabela(result).adultos.grauUm.valor ,color:'rgb(255, 140, 0)', fontWeight:'bold'}, 
+    grauUm : {color:'rgb(255, 140, 0)', fontWeight:'bold'}, 
     def(){return "+"+(result - 80)}}}) : '';
     //def(){return "+"+(imc - 25.0)}
 
@@ -193,14 +188,14 @@ export function Validate(result, idade, genero, dispatch, finished){
     dispatch({ type: 'UPDATE_VALUE', payload : 145}) 
     finished ? dispatch({ type: 'UPDATE_NIVEL', 
     payload : { name: Tabela(result).adultos.grauDois.texto, color: 'rgb(255, 0, 0)',
-    grauDois : {name: Tabela(result).adultos.grauDois.texto, valor: Tabela(result).adultos.grauDois.valor ,color:'rgb(255, 0, 0)', fontWeight:'bold'}}}) : '';
+    grauDois : {color:'rgb(255, 0, 0)', fontWeight:'bold'}}}) : '';
     //def(){return "+"+(imc - 25.0)}
 
   }else if(Tabela(result).adultos.grauTres.condicao){
     dispatch({ type: 'UPDATE_VALUE', payload : 145}) 
     finished ? dispatch({ type: 'UPDATE_NIVEL', 
     payload : { name: Tabela(result).adultos.grauTres.texto, color: 'rgb(255, 0, 0)', 
-    grauTres : {name: Tabela(result).adultos.grauTres.texto, valor: Tabela(result).adultos.grauTres.valor ,color:'rgb(255, 0, 0)', fontWeight:'bold'},
+    grauTres : {color:'rgb(255, 0, 0)', fontWeight:'bold'},
     def(){return "+"+(result - 0)}}}) : '';
     //def(){return "+"+(imc - 25.0)}
     }
@@ -210,20 +205,16 @@ export function Validate(result, idade, genero, dispatch, finished){
 
 export default function Form ({ navigation }) {
 
-  const { dispatch } = useContext(ValidContext)
-
   const [altura, setAltura] = useState()
   const [idade, setIdade] = useState()
   const [genero, setGenero] = useState()
   const [peso, setPeso] = useState()
   const [result, setResult] = useState(0)
-  const [startNivel, setStartNivel] = useState()
   const [valid, setValid] = useState({
     idade : '',  
     altura : '', 
     peso : ''
   })
-  const [button, setbutton] = useState("Calcular IMC")
 
   const calcImc = () =>{
     const imc = (peso / (altura * altura))
@@ -245,7 +236,6 @@ export default function Form ({ navigation }) {
 
   useEffect(()=>{
   if(result != 0 && !isNaN(result)){
-    Validate(result, idade, genero, dispatch)
     navigation.navigate('SpeedMeter', {
       titulo : 'CALCULADORA IMC PRO',
       imc: result,
@@ -292,10 +282,7 @@ export default function Form ({ navigation }) {
             placeholder="Ex.: 73.569" 
             keyboardType="numeric"
           />
-          <Text>{result}</Text>
-          <Text>{startNivel}</Text>
-          <Button title={button} onPress={()=>{
-            setbutton("CALCULAR NOVAMENTE")
+          <Button title='Calcular' onPress={()=>{
             validateForms()
             calcImc()
           
