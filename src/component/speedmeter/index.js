@@ -96,7 +96,7 @@ function SpeedMeter ({route, navigation}) {
         <View style={styles.speedResultText}><Text style={{fontSize: 20, color:color}}>{name}</Text> 
         <Text style={{fontSize: 20, color:color}}>{saudavel ?  <Icon name="check" size={30} /> : (def).toFixed(1)+" kg"}</Text></View>
 
-      <View style={{borderBottomColor:'black', borderBottomWidth:1, marginTop:'5%', marginBottom:'5%'}}></View>
+      <View style={styles.borderLineStyle}></View>
 
         <View style={styles.speedResultText}>{idade < 16 ? <Text style={[styles.textList, grave]}>{Tabela(imc)[genero][idade].grave.texto}</Text> : <Text style={[styles.textList, grave]}>{Tabela(imc).adultos.grave.texto}</Text>}
         {idade < 16 ? <Text style={[styles.textList, grave]}> {Tabela(imc)[genero][idade].grave.valor}</Text> : <Text style={[styles.textList, grave]}>{Tabela(imc).adultos.grave.valor}</Text>}</View>
@@ -122,7 +122,7 @@ function SpeedMeter ({route, navigation}) {
         <View style={styles.speedResultText}>{idade < 16 ? null : <Text style={[styles.textList, grauTres]}>{Tabela(imc).adultos.grauTres.texto}</Text>} 
         {idade < 16 ? null : <Text style={[styles.textList, grauTres]}>{Tabela(imc).adultos.grauTres.valor}</Text>}</View>
 
-      <View style={{borderBottomColor:'black', borderBottomWidth:1, marginTop:'5%', marginBottom:'5%'}}></View>
+      <View style={styles.borderLineStyle}></View>
 
         <View style={styles.speedResultText}><Text style={[styles.textList, {}]}>Peso normal</Text> 
         <Text style={[styles.textList, {}]}>{normal}</Text></View>
@@ -181,7 +181,13 @@ const styles = EStylesheet.create({
   textList:{
     fontSize: '1.1rem',
     color:'rgb(0, 0, 0)'
-  }
+  },
+  borderLineStyle:{
+    borderBottomColor:'rgb(0, 0, 0)', 
+    borderBottomWidth: '0.1rem', 
+    marginTop: '1rem', 
+    marginBottom:'1rem'
+  },
 });
 
 EStylesheet.build()
