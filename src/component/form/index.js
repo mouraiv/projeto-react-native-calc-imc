@@ -173,7 +173,7 @@ export function Validate(result, idade, genero, peso, dispatch, finished){
     sobrepeso : {color:'rgb(255, 140, 0)', fontWeight:'bold'}}}) : '';
 
   }else if(Tabela(result).adultos.grauUm.condicao){
-    dispatch({ type: 'UPDATE_VALUE', payload : 99}) 
+    dispatch({ type: 'UPDATE_VALUE', payload : 0}) 
     finished ? dispatch({ type: 'UPDATE_NIVEL', 
     payload : { name: Tabela(result).adultos.grauUm.texto, color: 'rgb(255, 140, 0)',
     normal: '66.7 - 90.0 kg', def: (peso - 90.0),
