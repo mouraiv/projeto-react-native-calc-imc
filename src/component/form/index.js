@@ -4,7 +4,8 @@ import {
   TextInput,
   Button,
   Text,
-  TouchableHighlight
+  TouchableHighlight,
+  ScrollView
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Foundation';
@@ -245,6 +246,7 @@ export default function Form ({ navigation }) {
 
   return (
     <View>
+      <ScrollView>
         <View>
         <Text>Idade :</Text>
           <Text>{valid.idade}</Text>
@@ -286,7 +288,7 @@ export default function Form ({ navigation }) {
           
           }}/>
         </View>
-        
+        </ScrollView>
     </View>
   )
 };

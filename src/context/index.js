@@ -24,7 +24,9 @@ const reducer = (state, action) =>{
 
     switch(action.type){
         case 'UPDATE_VALUE' : {
-            const newState = {...state}
+            const { value } = state
+            console.log(value)
+            const newState = {...state, value}
             newState.value = action.payload
             return newState
         }
