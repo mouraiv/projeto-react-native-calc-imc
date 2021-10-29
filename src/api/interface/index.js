@@ -34,42 +34,42 @@ export function Validate(result, idade, genero, peso, dispatch, finished){
     }else{
   
     if(result < 16.0){
-      dispatch({ type: 'UPDATE_VALUE', payload : 145}) 
+      dispatch({ type: 'UPDATE_VALUE', payload : 138}) 
       finished ? dispatch({ type: 'UPDATE_NIVEL', 
       payload : { name: Tabela(result).adultos.grave.texto, color: 'rgb(255, 0, 0)',
       normal: '66.7 - 90.0 kg', def: (peso - 66.7), 
       grave : {color:'rgb(255, 0, 0)', fontWeight:'bold'}}}) : '';
   
     }else if(result > 15.9 && result < 18.5){
-      dispatch({ type: 'UPDATE_VALUE', payload : 50}) 
+      dispatch({ type: 'UPDATE_VALUE', payload : 49}) 
       finished ? dispatch({ type: 'UPDATE_NIVEL', 
       payload : { name: Tabela(result).adultos.moderado.texto, color: 'rgb(255,215,0)',
       normal: '66.7 - 90.0 kg', def: (peso - 66.7),
       moderado : {color:'rgb(255,215,0)', fontWeight:'bold'}}}) : '';
       
     }else if(result > 16.9 && result < 18.5){
-      dispatch({ type: 'UPDATE_VALUE', payload : 50}) 
+      dispatch({ type: 'UPDATE_VALUE', payload : 49}) 
       finished ? dispatch({ type: 'UPDATE_NIVEL', 
       payload : { name: Tabela(result).adultos.leve.texto, color: 'rgb(255,215,0)',
       normal: '66.7 - 90.0 kg', def: (peso - 66.7),
       leve : {color:'rgb(255,215,0)', fontWeight:'bold'}}}) : '';
       
     }else if(result > 18.4 && result < 25.0){
-      dispatch({ type: 'UPDATE_VALUE', payload : 0}) 
+      dispatch({ type: 'UPDATE_VALUE', payload : 7}) 
       finished ? dispatch({ type: 'UPDATE_NIVEL', 
       payload : { name: Tabela(result).adultos.saudavel.texto, color: 'rgb(50,205,50)',
       normal: '66.7 - 90.0 kg', def: (peso - 90.0),
       saudavel : {color:'rgb(50,205,50)', fontWeight:'bold'}}}) : '';
      
     }else if(result > 24.9 && result < 30.0){
-      dispatch({ type: 'UPDATE_VALUE', payload : 99}) 
+      dispatch({ type: 'UPDATE_VALUE', payload : 97}) 
       finished ? dispatch({ type: 'UPDATE_NIVEL', 
       payload : { name: Tabela(result).adultos.sobrepeso.texto, color: 'rgb(255, 140, 0)',
       normal: '66.7 - 90.0 kg', def: (peso - 90.0),
       sobrepeso : {color:'rgb(255, 140, 0)', fontWeight:'bold'}}}) : '';
   
     }else if(Tabela(result).adultos.grauUm.condicao){
-      dispatch({ type: 'UPDATE_VALUE', payload : 99}) 
+      dispatch({ type: 'UPDATE_VALUE', payload : 97}) 
       finished ? dispatch({ type: 'UPDATE_NIVEL', 
       payload : { name: Tabela(result).adultos.grauUm.texto, color: 'rgb(255, 140, 0)',
       normal: '66.7 - 90.0 kg', def: (peso - 90.0),
@@ -77,7 +77,7 @@ export function Validate(result, idade, genero, peso, dispatch, finished){
       }}) : '';
   
     }else if(result > 34.9 && result < 40.0){
-      dispatch({ type: 'UPDATE_VALUE', payload : 145}) 
+      dispatch({ type: 'UPDATE_VALUE', payload : 138}) 
       finished ? dispatch({ type: 'UPDATE_NIVEL', 
       payload : { name: Tabela(result).adultos.grauDois.texto, color: 'rgb(255, 0, 0)',
       normal: '66.7 - 90.0 kg', def: (peso - 90.0),
@@ -85,7 +85,7 @@ export function Validate(result, idade, genero, peso, dispatch, finished){
       }}) : '';
   
     }else if(Tabela(result).adultos.grauTres.condicao){
-      dispatch({ type: 'UPDATE_VALUE', payload : 145}) 
+      dispatch({ type: 'UPDATE_VALUE', payload : 138}) 
       finished ? dispatch({ type: 'UPDATE_NIVEL', 
       payload : { name: Tabela(result).adultos.grauTres.texto, color: 'rgb(255, 0, 0)',
       normal: '66.7 - 90.0 kg', def: (peso - 90.0), 
