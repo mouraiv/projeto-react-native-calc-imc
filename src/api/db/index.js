@@ -49,43 +49,83 @@ export const Tabela = (result) => {
       },
       adultos: {
           grave: {
+            ratio: 138,
             texto: 'Magreza grave',
             valor: '≤ 15.9',
+            color:'rgb(255, 0, 0)', 
+            fontWeight:'bold',
+            normal: 66.7,
+            faixa: '66.7 - 90.0 kg',
             condicao: result < 16.0
           },
           moderado: {
+            ratio: 49,
             texto: 'Magreza Moderada',
             valor: '16.0 - 18.4',
+            color:'rgb(255,215,0)', 
+            fontWeight:'bold',
+            normal: 66.7,
+            faixa: '66.7 - 90.0 kg',
             condicao: result > 15.9 && result < 18.5
           },
           leve: {
+            ratio: 49,
             texto: 'Magreza Leve',
             valor: '17.0 - 18.4',
+            color:'rgb(255,215,0)', 
+            fontWeight:'bold',
+            normal: 66.7,
+            faixa: '66.7 - 90.0 kg',
             condicao: result > 16.9 && result < 18.5
           },
           saudavel: {
+            ratio: 7,
             texto: 'Saudável',
             valor: '18.5 - 24.9',
+            color:'rgb(50,205,50)', 
+            fontWeight:'bold',
+            normal: 90.0,
+            faixa: '66.7 - 90.0 kg',
             condicao: result > 18.4 && result < 25.0
           },
           sobrepeso: {
+            ratio: 97,
             texto: 'Sobrepeso',
             valor: '25.0 - 29.9',
+            color:'rgb(255, 140, 0)', 
+            fontWeight:'bold',
+            normal: 90.0,
+            faixa: '66.7 - 90.0 kg',
             condicao: result > 24.9 && result < 30.0
           },
           grauUm: {
+            ratio: 97,
             texto: 'Obesidade Grau I',
             valor: '30.0 - 34.9',
+            color:'rgb(255, 140, 0)', 
+            fontWeight:'bold',
+            normal: 90.0,
+            faixa: '66.7 - 90.0 kg',
             condicao: result > 29.9 && result < 35.0
           },
           grauDois: {
+            ratio: 138,
             texto: 'Obesidade Grau II',
             valor: '35.0 - 39.9',
+            color:'rgb(255, 0, 0)', 
+            fontWeight:'bold',
+            normal: 90.0,
+            faixa: '66.7 - 90.0 kg',
             condicao: result > 34.9 && result < 40.0
           },
           grauTres: {
+            ratio: 138,
             texto: 'Obesidade Grau III',
             valor: '40.0 ≥',
+            color:'rgb(255, 0, 0)', 
+            fontWeight:'bold',
+            normal: 90.0,
+            faixa: '66.7 - 90.0 kg',
             condicao: result > 39.9
           }
         }

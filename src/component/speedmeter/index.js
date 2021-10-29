@@ -35,6 +35,7 @@ function SpeedMeter ({route, navigation}) {
       useNativeDriver: false
     }).start(({finished})=>{
             Validate(imc, idade, genero, peso, dispatch, finished)
+    
     })
   }
 
@@ -73,7 +74,7 @@ function SpeedMeter ({route, navigation}) {
 
       <View style={styles.absoluteResult}>
         <Text style={{fontWeight:'bold',fontSize: RFPercentage(1.8)}}>IMC</Text>
-        <Text style={{fontSize: RFPercentage(5)}}>{imc}</Text>
+        <Text style={{fontWeight:'bold', fontSize: RFPercentage(5)}}>{imc}</Text>
         <Text style={{fontWeight:'bold',fontSize: RFPercentage(1.8)}}>RISCO: ---</Text>
       </View>
 
@@ -99,8 +100,8 @@ function SpeedMeter ({route, navigation}) {
     <View style={styles.speedResultText}><Text style={[{fontWeight:'bold'},styles.textList]}>Categoria</Text> 
     <Text style={[{fontWeight:'bold'},styles.textList]}>Diferença</Text></View>
 
-    <View style={styles.speedResultText}><Text style={{fontSize: RFPercentage(3.5), color:color}}>{name}</Text> 
-    <Text style={{fontSize: RFPercentage(3.5), color:color}}>{saudavel ?  <Icon name="check" style={styles.icon} /> : (def).toFixed(1)+" kg"}</Text></View>
+    <View style={styles.speedResultText}><Text style={{fontWeight:'bold',fontSize: RFPercentage(3), color:color}}>{name}</Text> 
+    <Text style={{fontWeight:'bold',fontSize: RFPercentage(3), color:color}}>{saudavel ?  <Icon name="check" style={styles.icon} /> : (def).toFixed(1)+" kg"}</Text></View>
 
     <View style={styles.borderLineStyle}></View>
 
@@ -165,9 +166,7 @@ const styles = EStylesheet.create({
     alignSelf: 'center',
   },
   speedResultList:{
-    marginTop: '3%',
-    marginLeft: '5%',
-    marginRight: '5%',
+    margin: '5%',
   },
   absoluteResult:{
     left:0, 
