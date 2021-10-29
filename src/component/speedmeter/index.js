@@ -9,10 +9,12 @@ import {
 import EStylesheet from 'react-native-extended-stylesheet';
 import Icon from 'react-native-vector-icons/Entypo';
 import { RFPercentage } from "react-native-responsive-fontsize";
+import Svg, { Path, Text as SvgText, G } from 'react-native-svg'
 
 import { ValidContext } from '../../context/'
-import Svg, { Path, Text as SvgText, G } from 'react-native-svg'
-import { Validate, Tabela } from '../../component/form/'
+import { Tabela } from '../../api/db/'
+import { Validate } from '../../api/interface/'
+
 
 function SpeedMeter ({route, navigation}) {
 
@@ -22,11 +24,8 @@ function SpeedMeter ({route, navigation}) {
 
   const { titulo, imc, idade, genero, peso } = route.params
 
-
   let rotateAnimed = new Animated.Value(0)
 
-  
-  
   const startRotateAnimed = () =>{
     rotateAnimed.setValue(0)
     Animated.timing(rotateAnimed, {
@@ -46,7 +45,7 @@ function SpeedMeter ({route, navigation}) {
 
   const rotateData = rotateAnimed.interpolate({
       inputRange: [0,1],
-      outputRange: ['0deg', '0deg']
+      outputRange: ['0deg', value+'deg']
       
   })
 
@@ -97,7 +96,7 @@ function SpeedMeter ({route, navigation}) {
     <Text style={[{fontWeight:'bold'},styles.textList]}>Diferença</Text></View>
 
     <View style={styles.speedResultText}><Text style={{fontSize: RFPercentage(3.5), color:color}}>{name}</Text> 
-    <Text style={{fontSize: RFPercentage(3.5), color:color}}>{saudavel ?  <Icon name="check" size={30} /> : (def).toFixed(1)+" kg"}</Text></View>
+    <Text style={{fontSize: RFPercentage(3.5), color:color}}>{saudavel ?  <Icon name="check" style={styles.icon} /> : (def).toFixed(1)+" kg"}</Text></View>
 
     <View style={styles.borderLineStyle}></View>
 
@@ -187,6 +186,9 @@ const styles = EStylesheet.create({
     fontSize: RFPercentage(2.5),
     color:'rgb(0, 0, 0)',
     paddingBottom:'2.5%',
+  },
+  icon:{
+    fontSize: RFPercentage(6),
   },
   borderLineStyle:{
     borderBottomColor:'rgb(0, 0, 0)', 
