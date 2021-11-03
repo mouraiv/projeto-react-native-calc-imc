@@ -14,12 +14,13 @@ import Svg, { Path, Text as SvgText, G } from 'react-native-svg'
 import { ValidContext } from '../../context/'
 import { Tabela } from '../../api/db/'
 import { Validate } from '../../api/interface/'
+import Bar from '../bar/'
 
 
 function SpeedMeter ({route, navigation}) {
 
   const { state: {value, categoria}, dispatch } = useContext(ValidContext)
-  const { name, color, normal, def,  grave, moderado, leve, saudavel, 
+  const { name, risco, color, normal, def,  grave, moderado, leve, saudavel, 
           sobrepeso, grauUm, grauDois, grauTres } = categoria
 
   const { titulo, imc, idade, genero, peso } = route.params
@@ -46,13 +47,15 @@ function SpeedMeter ({route, navigation}) {
 
   const rotateData = rotateAnimed.interpolate({
       inputRange: [0,1],
-      outputRange: ['0deg', value+'deg']
+      outputRange: ['0deg', '0deg']
       
   })
 
   return (
 
 <View style={styles.container}>
+
+      <Bar />
   
     <View style={styles.containerAnimed} >
 
@@ -75,7 +78,7 @@ function SpeedMeter ({route, navigation}) {
       <View style={styles.absoluteResult}>
         <Text style={{fontWeight:'bold',fontSize: RFPercentage(1.8)}}>IMC</Text>
         <Text style={{fontWeight:'bold', fontSize: RFPercentage(5)}}>{imc}</Text>
-        <Text style={{fontWeight:'bold',fontSize: RFPercentage(1.8)}}>RISCO: ---</Text>
+        <Text style={{fontWeight:'bold',fontSize: RFPercentage(1.8), color:color}}>{risco}</Text>
       </View>
 
     </View>
@@ -129,10 +132,14 @@ function SpeedMeter ({route, navigation}) {
         <View style={styles.speedResultText}>{idade < 16 ? null : <Text style={[styles.textList, grauTres]}>{Tabela(imc).adultos.grauTres.texto}</Text>} 
         {idade < 16 ? null : <Text style={[styles.textList, grauTres]}>{Tabela(imc).adultos.grauTres.valor}</Text>}</View>
 
-      <View style={styles.borderLineStyle}></View>
+        <View style={styles.footer}>
+
+        <View style={styles.borderLineStyle}></View>
 
         <View style={styles.speedResultText}><Text style={[styles.textList, {}]}>Peso normal</Text> 
         <Text style={[styles.textList, {}]}>{normal}</Text></View>    
+
+        </View>
 
     </View>      
 
@@ -151,7 +158,11 @@ const styles = EStylesheet.create({
     height:'30%' 
   },
   containerResult:{
-    height:'70%' 
+    margin: '5%',
+    height:'50%' 
+  },
+  footer:{
+    height:'10%'
   },
   speedStyle:{
     width: '100%',
@@ -160,13 +171,13 @@ const styles = EStylesheet.create({
   },
   cicleStyle:{
     width: '100%',
-    height: '33%',
-    top: '16%',
+    height: '30%',
+    top: '22%',
     position:'absolute',
     alignSelf: 'center',
   },
   speedResultList:{
-    margin: '5%',
+    //margin: '5%',
   },
   absoluteResult:{
     left:0, 
@@ -183,10 +194,10 @@ const styles = EStylesheet.create({
   textList:{
     fontSize: RFPercentage(2.5),
     color:'rgb(0, 0, 0)',
-    paddingBottom:'2.5%',
+    paddingBottom:'1.5%',
   },
   icon:{
-    fontSize: RFPercentage(6),
+    fontSize: RFPercentage(4),
   },
   borderLineStyle:{
     borderBottomColor:'rgb(0, 0, 0)', 
