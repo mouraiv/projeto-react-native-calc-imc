@@ -7,57 +7,57 @@ import {
 } from 'react-native';
 
 import EStylesheet from 'react-native-extended-stylesheet';
-import Icon from 'react-native-vector-icons/Entypo';
 import { RFPercentage } from "react-native-responsive-fontsize";
 import Svg, { Path, Text as SvgText, G } from 'react-native-svg'
 
 import { ValidContext } from '../../context/'
-import { Tabela } from '../../api/db/'
 import { Validate } from '../../api/interface/'
+
 import Bar from '../bar/'
+import Result from '../result';
+import Footer from '../footer';
 
 
 function SpeedMeter ({route, navigation}) {
 
+  const { titulo, imc, idade, genero, peso } = route.params 
+
   const { state: {value, categoria}, dispatch } = useContext(ValidContext)
-  const { name, risco, color, normal, def,  grave, moderado, leve, saudavel, 
-          sobrepeso, grauUm, grauDois, grauTres } = categoria
+  const {risco, color} = categoria
 
-  const { titulo, imc, idade, genero, peso } = route.params
+          let rotateAnimed = new Animated.Value(0)
 
-  let rotateAnimed = new Animated.Value(0)
-
-  const startRotateAnimed = () =>{
-    rotateAnimed.setValue(0)
-    Animated.timing(rotateAnimed, {
-      toValue: 1,
-      duration: 1600,
-      easing: Easing.linear,
-      useNativeDriver: false
-    }).start(({finished})=>{
-            Validate(imc, idade, genero, peso, dispatch, finished)
-    
-    })
-  }
-
-  useEffect(()=>{
-    startRotateAnimed()
-
-  },[imc])
-
-  const rotateData = rotateAnimed.interpolate({
-      inputRange: [0,1],
-      outputRange: ['0deg', '0deg']
-      
-  })
+          const startRotateAnimed = () =>{
+            rotateAnimed.setValue(0)
+            Animated.timing(rotateAnimed, {
+              toValue: 1,
+              duration: 1600,
+              easing: Easing.linear,
+              useNativeDriver: false
+            }).start(({finished})=>{
+                    Validate(imc, idade, genero, peso, dispatch, finished)
+            
+            })
+          }
+        
+          useEffect(()=>{
+            startRotateAnimed()
+        
+          },[imc])
+        
+          const rotateData = rotateAnimed.interpolate({
+              inputRange: [0,1],
+              outputRange: ['0deg', '0deg']
+              
+          })                
 
   return (
 
 <View style={styles.container}>
 
-      <Bar />
+    <Bar />
   
-    <View style={styles.containerAnimed} >
+    <View style={styles.containerAnimed}>
 
       <View style={styles.speedStyle}>
 
@@ -98,50 +98,8 @@ function SpeedMeter ({route, navigation}) {
 
     <View style={styles.containerResult} >
 
-    <View style={styles.speedResultList} >
-
-    <View style={styles.speedResultText}><Text style={[{fontWeight:'bold'},styles.textList]}>Categoria</Text> 
-    <Text style={[{fontWeight:'bold'},styles.textList]}>Diferença</Text></View>
-
-    <View style={styles.speedResultText}><Text style={{fontWeight:'bold',fontSize: RFPercentage(3), color:color}}>{name}</Text> 
-    <Text style={{fontWeight:'bold',fontSize: RFPercentage(3), color:color}}>{saudavel ?  <Icon name="check" style={styles.icon} /> : (def).toFixed(1)+" kg"}</Text></View>
-
-    <View style={styles.borderLineStyle}></View>
-
-        <View style={styles.speedResultText}>{idade < 16 ? <Text style={[styles.textList, grave]}>{Tabela(imc)[genero][idade].grave.texto}</Text> : <Text style={[styles.textList, grave]}>{Tabela(imc).adultos.grave.texto}</Text>}
-        {idade < 16 ? <Text style={[styles.textList, grave]}> {Tabela(imc)[genero][idade].grave.valor}</Text> : <Text style={[styles.textList, grave]}>{Tabela(imc).adultos.grave.valor}</Text>}</View>
-
-        <View style={styles.speedResultText}>{idade < 16 ? null : <Text style={[styles.textList, moderado]}>{Tabela(imc).adultos.moderado.texto}</Text> }
-        {idade < 16 ? null : <Text style={[styles.textList, moderado]}>{Tabela(imc).adultos.moderado.valor}</Text>}</View>
-
-        <View style={styles.speedResultText}>{idade < 16 ? null : <Text style={[styles.textList, leve]}>{Tabela(imc).adultos.leve.texto}</Text>} 
-        {idade < 16 ? null : <Text style={[styles.textList, leve]}>{Tabela(imc).adultos.leve.valor}</Text>}</View>
-
-        <View style={styles.speedResultText}>{idade < 16 ? <Text style={[styles.textList, saudavel]}>{Tabela(imc)[genero][idade].saudavel.texto}</Text> : <Text style={[styles.textList, saudavel]}>{Tabela(imc).adultos.saudavel.texto}</Text>} 
-        {idade < 16 ? <Text style={[styles.textList, saudavel]}>{Tabela(imc)[genero][idade].saudavel.valor}</Text> : <Text style={[styles.textList, saudavel]}>{Tabela(imc).adultos.saudavel.valor}</Text>}</View>
-
-        <View style={styles.speedResultText}>{idade < 16 ? <Text style={[styles.textList, sobrepeso]}>{Tabela(imc)[genero][idade].sobrepeso.texto}</Text> : <Text style={[styles.textList, sobrepeso]}>{Tabela(imc).adultos.sobrepeso.texto}</Text>} 
-        {idade < 16 ? <Text style={[styles.textList, sobrepeso]}>{Tabela(imc)[genero][idade].sobrepeso.valor}</Text> : <Text style={[styles.textList, sobrepeso]}>{Tabela(imc).adultos.sobrepeso.valor}</Text>}</View>
-
-        <View style={styles.speedResultText}>{idade < 16 ? <Text style={[styles.textList, grauUm]}>{Tabela(imc)[genero][idade].grauUm.texto}</Text> : <Text style={[styles.textList, grauUm]}>{Tabela(imc).adultos.grauUm.texto}</Text>} 
-        {idade < 16 ? <Text style={[styles.textList, grauUm]}>{Tabela(imc)[genero][idade].grauUm.valor}</Text> : <Text style={[styles.textList, grauUm]}>{Tabela(imc).adultos.grauUm.valor}</Text>}</View>
-
-        <View style={styles.speedResultText}>{idade < 16 ? null : <Text style={[styles.textList, grauDois]}>{Tabela(imc).adultos.grauDois.texto}</Text>} 
-        {idade < 16 ? null : <Text style={[styles.textList, grauDois]}>{Tabela(imc).adultos.grauDois.valor}</Text>}</View>
-
-        <View style={styles.speedResultText}>{idade < 16 ? null : <Text style={[styles.textList, grauTres]}>{Tabela(imc).adultos.grauTres.texto}</Text>} 
-        {idade < 16 ? null : <Text style={[styles.textList, grauTres]}>{Tabela(imc).adultos.grauTres.valor}</Text>}</View>
-
-    </View>
-
-        <View style={styles.footer}>
-
-        <View style={styles.borderLineStyle}></View>
-
-        <View style={styles.speedResultText}><Text style={[styles.textList, {}]}>Peso normal</Text> 
-        <Text style={[styles.textList, {}]}>{normal}</Text></View>    
-
-    </View>      
+        <Result imc={imc} genero={genero} idade={idade} />
+        <Footer />
 
     </View>
 
@@ -161,13 +119,6 @@ const styles = EStylesheet.create({
     margin: '5%',
     height:'57%', 
   },
-  footer:{
-    position: 'absolute',
-    height:'18%',
-    left: 0,
-    right: 0,
-    bottom: 0,
-  },
   speedStyle:{
     width: '100%',
     height: '100%',
@@ -180,9 +131,6 @@ const styles = EStylesheet.create({
     position:'absolute',
     alignSelf: 'center',
   },
-  speedResultList:{
-    minHeight:'50%',
-  },
   absoluteResult:{
     left:0, 
     right:0, 
@@ -190,24 +138,6 @@ const styles = EStylesheet.create({
     position:'absolute', 
     alignItems:'center',
     zIndex: 1
-  },
-  speedResultText:{
-    flexDirection:'row', 
-    justifyContent:'space-between',
-  },
-  textList:{
-    fontSize: RFPercentage(2.5),
-    color:'rgb(0, 0, 0)',
-    paddingBottom:'1.5%',
-  },
-  icon:{
-    fontSize: RFPercentage(4),
-  },
-  borderLineStyle:{
-    borderBottomColor:'rgb(0, 0, 0)', 
-    borderBottomWidth: RFPercentage(0.1), 
-    marginTop: '3%',
-    marginBottom:'3%', 
   },
 });
 

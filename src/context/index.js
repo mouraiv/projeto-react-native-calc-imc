@@ -41,7 +41,7 @@ const reducer = (state, action) =>{
 
 }
 
-export default function ValidProvider({children}){
+function ValidProvider({children}){
     const [state, dispatch] = useReducer(reducer, initialValue)
 
     return(
@@ -51,3 +51,5 @@ export default function ValidProvider({children}){
         </ValidContext.Provider>
     )
 }
+
+export default ValidProvider;

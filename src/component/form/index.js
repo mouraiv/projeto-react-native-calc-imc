@@ -13,7 +13,7 @@ import Icon from 'react-native-vector-icons/Foundation';
 import { Validate } from '../../api/interface/'
 import { ValidContext } from '../../context/'
 
-export default function Form ({ navigation }) {
+function Form ({ navigation }){ 
 
   const { dispatch } = useContext(ValidContext)
 
@@ -107,3 +107,5 @@ export default function Form ({ navigation }) {
     </View>
   )
 };
+
+export default Form;
