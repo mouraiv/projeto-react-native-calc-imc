@@ -132,14 +132,14 @@ function SpeedMeter ({route, navigation}) {
         <View style={styles.speedResultText}>{idade < 16 ? null : <Text style={[styles.textList, grauTres]}>{Tabela(imc).adultos.grauTres.texto}</Text>} 
         {idade < 16 ? null : <Text style={[styles.textList, grauTres]}>{Tabela(imc).adultos.grauTres.valor}</Text>}</View>
 
+    </View>
+
         <View style={styles.footer}>
 
         <View style={styles.borderLineStyle}></View>
 
         <View style={styles.speedResultText}><Text style={[styles.textList, {}]}>Peso normal</Text> 
         <Text style={[styles.textList, {}]}>{normal}</Text></View>    
-
-        </View>
 
     </View>      
 
@@ -159,10 +159,14 @@ const styles = EStylesheet.create({
   },
   containerResult:{
     margin: '5%',
-    height:'50%' 
+    height:'57%', 
   },
   footer:{
-    height:'10%'
+    position: 'absolute',
+    height:'18%',
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
   speedStyle:{
     width: '100%',
@@ -177,7 +181,7 @@ const styles = EStylesheet.create({
     alignSelf: 'center',
   },
   speedResultList:{
-    //margin: '5%',
+    minHeight:'50%',
   },
   absoluteResult:{
     left:0, 
