@@ -4,8 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import ValidProvider from './src/context/'
 import Form from './src/component/form/'
-//import Result from './src/component/speedmeter/'
-import SpeedMeter from './src/component/speedmeter/';
+import Imc from './src/pages/imc/';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,7 +20,7 @@ function App () {
         }}
       >
         <Stack.Screen name="Form" component={Form} /*options={{headerShown:false}}*/ />
-        <Stack.Screen name="SpeedMeter" component={SpeedMeter} />
+        <Stack.Screen name="Imc" component={Imc} />
       </Stack.Navigator>
 
     </NavigationContainer>

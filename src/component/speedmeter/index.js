@@ -1,63 +1,13 @@
-import React, {useContext, useEffect } from 'react';
+import React from 'react';
 import {
   View,
-  Text,
-  Animated,
-  Easing
 } from 'react-native';
 
 import EStylesheet from 'react-native-extended-stylesheet';
-import { RFPercentage } from "react-native-responsive-fontsize";
 import Svg, { Path, Text as SvgText, G } from 'react-native-svg'
 
-import { ValidContext } from '../../context/'
-import { Validate } from '../../api/interface/'
-
-import Bar from '../bar/'
-import Result from '../result';
-import Footer from '../footer';
-
-
-function SpeedMeter ({route, navigation}) {
-
-  const { titulo, imc, idade, genero, peso } = route.params 
-
-  const { state: {value, categoria}, dispatch } = useContext(ValidContext)
-  const {risco, color} = categoria
-
-          let rotateAnimed = new Animated.Value(0)
-
-          const startRotateAnimed = () =>{
-            rotateAnimed.setValue(0)
-            Animated.timing(rotateAnimed, {
-              toValue: 1,
-              duration: 1600,
-              easing: Easing.linear,
-              useNativeDriver: false
-            }).start(({finished})=>{
-                    Validate(imc, idade, genero, peso, dispatch, finished)
-            
-            })
-          }
-        
-          useEffect(()=>{
-            startRotateAnimed()
-        
-          },[imc])
-        
-          const rotateData = rotateAnimed.interpolate({
-              inputRange: [0,1],
-              outputRange: ['0deg', '0deg']
-              
-          })                
-
+function SpeedMeter() {
   return (
-
-<View style={styles.container}>
-
-    <Bar />
-  
-    <View style={styles.containerAnimed}>
 
       <View style={styles.speedStyle}>
 
@@ -73,71 +23,16 @@ function SpeedMeter ({route, navigation}) {
         <SvgText fill="rgb(0, 0, 0)" fontWeight='bold' fontFamily='sans-serif-light' transform="matrix(0.356224, 0.934401, -0.934401, 0.356224, 447.123962, 38.390083)" x="107.293" y="172.115">CRÍTICO</SvgText>
       </G>
       </Svg>
+
       </View>
-
-      <View style={styles.absoluteResult}>
-        <Text style={{fontWeight:'bold',fontSize: RFPercentage(1.8)}}>IMC</Text>
-        <Text style={{fontWeight:'bold', fontSize: RFPercentage(5)}}>{imc}</Text>
-        <Text style={{fontWeight:'bold',fontSize: RFPercentage(1.8), color:color}}>{risco}</Text>
-      </View>
-
-    </View>
-
-    <Animated.View style={[styles.cicleStyle,{
-          transform: [{rotate: rotateData }]
-        }]}>
-
-        <Svg width="100%" height="100%" viewBox="0 0 135 135" preserveAspectRatio="xMidYMax meet">
-          <G transform="translate(-170,-192)" >
-          <Path d="M301.326,260.553C301.326,295.881,272.688,324.52,237.361,324.52C202.033,324.52,173.394,295.881,173.394,260.553C173.394,256.345,173.8,252.232,174.576,248.251L166.012,238.715L178.219,236.137C187.814,212.922,210.68,196.586,237.361,196.586C272.688,196.586,301.326,225.226,301.326,260.553Z" 
-                fill="rgb(255, 255, 255)" 
-          />
-          </G>
-        </Svg>
-      </Animated.View>
-
-    <View style={styles.containerResult} >
-
-        <Result imc={imc} genero={genero} idade={idade} />
-        <Footer />
-
-    </View>
-
-</View>  
   )
 };
 
 const styles = EStylesheet.create({
-  container:{
-    height:'100%', 
-    backgroundColor:'rgb(255, 255, 255)'
-  },
-  containerAnimed:{
-    height:'30%' 
-  },
-  containerResult:{
-    margin: '5%',
-    height:'57%', 
-  },
   speedStyle:{
     width: '100%',
     height: '100%',
     alignSelf: 'center',
-  },
-  cicleStyle:{
-    width: '100%',
-    height: '30%',
-    top: '22%',
-    position:'absolute',
-    alignSelf: 'center',
-  },
-  absoluteResult:{
-    left:0, 
-    right:0, 
-    bottom:0, 
-    position:'absolute', 
-    alignItems:'center',
-    zIndex: 1
   },
 });
 

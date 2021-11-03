@@ -49,7 +49,7 @@ function Form ({ navigation }){
   useEffect(()=>{
   if(result != 0 && !isNaN(result)){
     Validate(result, idade, genero, peso, dispatch)
-    navigation.navigate('SpeedMeter', {
+    navigation.navigate('Imc', {
       titulo : 'CALCULADORA IMC PRO',
       imc: result,
       idade: idade,
