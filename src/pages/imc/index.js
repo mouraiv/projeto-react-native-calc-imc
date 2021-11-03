@@ -35,7 +35,7 @@ function Imc({route, navigation}){
                 <List imc={imc} genero={genero} idade={idade} />
                 <Footer />
 
-        </View>
+            </View>
 
     </View>  
     )
@@ -44,14 +44,16 @@ function Imc({route, navigation}){
 const styles = EStylesheet.create({
     container:{
       height:'100%', 
-      backgroundColor:'rgb(255, 255, 255)'
     },
     containerAnimed:{
       height:'30%' 
     },
     containerResult:{
-      margin: '5%',
-      height:'57%', 
+      borderRadius: 15,  
+      margin:'3%',  
+      padding: '3%',
+      height:'58%',
+      backgroundColor:'rgb(255, 255, 255)' 
     },
 })
 

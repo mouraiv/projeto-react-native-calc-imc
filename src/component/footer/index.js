@@ -30,8 +30,8 @@ const styles = EStylesheet.create({
 footer:{
     position: 'absolute',
     height:'18%',
-    left: 0,
-    right: 0,
+    left: '3%',
+    right: '3%',
     bottom: 0,
   },
   speedResultText:{

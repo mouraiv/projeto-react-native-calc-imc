@@ -59,7 +59,7 @@ const styles = EStylesheet.create({
     cicleStyle:{
         width: '100%',
         height: '30%',
-        top: '22%',
+        top: '23%',
         position:'absolute',
         alignSelf: 'center',
       },
