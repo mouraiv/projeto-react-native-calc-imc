@@ -12,8 +12,8 @@ import Result from '../../component/result';
 import List from '../../component/list/';
 import Footer from '../../component/footer/';
 
-function Imc({route, navigation}){
-    const { imc, idade, genero, peso } = route.params 
+function Imc({route}){
+    const { imc, idade, genero, altura, peso } = route.params 
 
     return(
         <View style={styles.container}>
@@ -25,12 +25,11 @@ function Imc({route, navigation}){
                 <SpeedMeter/>
                 <Result imc={imc}/>
             
-
             </View>
 
-                <Ratio imc={imc} genero={genero} idade={idade} peso={peso}/>
+                <Ratio imc={imc} genero={genero} idade={idade} altura={altura} peso={peso}/>
 
-            <View style={styles.containerResult} >
+            <View style={styles.containerResult}>
 
                 <List imc={imc} genero={genero} idade={idade} />
                 <Footer />

@@ -13,6 +13,10 @@ import Icon from 'react-native-vector-icons/Foundation';
 import { Validate } from '../../api/interface/'
 import { ValidContext } from '../../context/'
 
+export function Intervalo(){
+  
+} 
+
 function Form ({ navigation }){ 
 
   const { dispatch } = useContext(ValidContext)
@@ -29,7 +33,9 @@ function Form ({ navigation }){
   })
 
   const calcImc = () =>{
-    const imc = (peso / (altura * altura))
+    const convert = (altura * 1 /100).toFixed(2)
+    console.log(convert)
+    const imc = (peso / (convert * convert))
     setResult(imc.toFixed(1))
   }
 
@@ -48,13 +54,14 @@ function Form ({ navigation }){
 
   useEffect(()=>{
   if(result != 0 && !isNaN(result)){
-    Validate(result, idade, genero, peso, dispatch)
+    Validate(result, idade, genero, altura, peso, dispatch)
     navigation.navigate('Imc', {
       titulo : 'CALCULADORA IMC PRO',
       imc: result,
       idade: idade,
       genero: genero,
-      peso: peso
+      peso: peso,
+      altura: altura
     });
     }
   },[result])
@@ -84,7 +91,7 @@ function Form ({ navigation }){
           <Text>Altura :</Text>
           <Text>{valid.altura}</Text>
           <TextInput
-            onChangeText={(text)=>{setAltura(text.replace(",","."))}} 
+            onChangeText={(text)=>{setAltura(text)}} 
             value={altura} 
             placeholder="Ex.: 1.75" 
             keyboardType="numeric"
@@ -92,7 +99,7 @@ function Form ({ navigation }){
           <Text>Peso :</Text>
           <Text>{valid.peso}</Text>
           <TextInput
-            onChangeText={(text) => {setPeso(text.replace(",","."))}}
+            onChangeText={(text) => {setPeso(text)}}
             value={peso}  
             placeholder="Ex.: 73.569" 
             keyboardType="numeric"

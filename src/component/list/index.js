@@ -11,7 +11,7 @@ import { RFPercentage } from "react-native-responsive-fontsize";
 import { ValidContext } from '../../context/'
 import { Tabela } from '../../api/db/'
 
-function List({imc, genero, idade}){
+function List({genero, idade}){
 
   const { state: {categoria},} = useContext(ValidContext)
   const { name, color, def,  grave, moderado, leve, saudavel, 
@@ -28,29 +28,29 @@ function List({imc, genero, idade}){
 
     <View style={styles.borderLineStyle}></View>
 
-        <View style={styles.speedResultText}>{idade < 16 ? <Text style={[styles.textList, grave]}>{Tabela(imc)[genero][idade].grave.texto}</Text> : <Text style={[styles.textList, grave]}>{Tabela(imc).adultos.grave.texto}</Text>}
-        {idade < 16 ? <Text style={[styles.textList, grave]}> {Tabela(imc)[genero][idade].grave.valor}</Text> : <Text style={[styles.textList, grave]}>{Tabela(imc).adultos.grave.valor}</Text>}</View>
+        <View style={styles.speedResultText}>{idade < 16 ? <Text style={[styles.textList, grave]}>{Tabela()[genero][idade].grave.texto}</Text> : <Text style={[styles.textList, grave]}>{Tabela().adultos.grave.texto}</Text>}
+        {idade < 16 ? <Text style={[styles.textList, grave]}> {Tabela()[genero][idade].grave.valor}</Text> : <Text style={[styles.textList, grave]}>{Tabela().adultos.grave.valor}</Text>}</View>
 
-        <View style={styles.speedResultText}>{idade < 16 ? null : <Text style={[styles.textList, moderado]}>{Tabela(imc).adultos.moderado.texto}</Text> }
-        {idade < 16 ? null : <Text style={[styles.textList, moderado]}>{Tabela(imc).adultos.moderado.valor}</Text>}</View>
+        <View style={styles.speedResultText}>{idade < 16 ? null : <Text style={[styles.textList, moderado]}>{Tabela().adultos.moderado.texto}</Text> }
+        {idade < 16 ? null : <Text style={[styles.textList, moderado]}>{Tabela().adultos.moderado.valor}</Text>}</View>
 
-        <View style={styles.speedResultText}>{idade < 16 ? null : <Text style={[styles.textList, leve]}>{Tabela(imc).adultos.leve.texto}</Text>} 
-        {idade < 16 ? null : <Text style={[styles.textList, leve]}>{Tabela(imc).adultos.leve.valor}</Text>}</View>
+        <View style={styles.speedResultText}>{idade < 16 ? null : <Text style={[styles.textList, leve]}>{Tabela().adultos.leve.texto}</Text>} 
+        {idade < 16 ? null : <Text style={[styles.textList, leve]}>{Tabela().adultos.leve.valor}</Text>}</View>
 
-        <View style={styles.speedResultText}>{idade < 16 ? <Text style={[styles.textList, saudavel]}>{Tabela(imc)[genero][idade].saudavel.texto}</Text> : <Text style={[styles.textList, saudavel]}>{Tabela(imc).adultos.saudavel.texto}</Text>} 
-        {idade < 16 ? <Text style={[styles.textList, saudavel]}>{Tabela(imc)[genero][idade].saudavel.valor}</Text> : <Text style={[styles.textList, saudavel]}>{Tabela(imc).adultos.saudavel.valor}</Text>}</View>
+        <View style={styles.speedResultText}>{idade < 16 ? <Text style={[styles.textList, saudavel]}>{Tabela()[genero][idade].saudavel.texto}</Text> : <Text style={[styles.textList, saudavel]}>{Tabela().adultos.saudavel.texto}</Text>} 
+        {idade < 16 ? <Text style={[styles.textList, saudavel]}>{Tabela()[genero][idade].saudavel.valor}</Text> : <Text style={[styles.textList, saudavel]}>{Tabela().adultos.saudavel.valor}</Text>}</View>
 
-        <View style={styles.speedResultText}>{idade < 16 ? <Text style={[styles.textList, sobrepeso]}>{Tabela(imc)[genero][idade].sobrepeso.texto}</Text> : <Text style={[styles.textList, sobrepeso]}>{Tabela(imc).adultos.sobrepeso.texto}</Text>} 
-        {idade < 16 ? <Text style={[styles.textList, sobrepeso]}>{Tabela(imc)[genero][idade].sobrepeso.valor}</Text> : <Text style={[styles.textList, sobrepeso]}>{Tabela(imc).adultos.sobrepeso.valor}</Text>}</View>
+        <View style={styles.speedResultText}>{idade < 16 ? <Text style={[styles.textList, sobrepeso]}>{Tabela()[genero][idade].sobrepeso.texto}</Text> : <Text style={[styles.textList, sobrepeso]}>{Tabela().adultos.sobrepeso.texto}</Text>} 
+        {idade < 16 ? <Text style={[styles.textList, sobrepeso]}>{Tabela()[genero][idade].sobrepeso.valor}</Text> : <Text style={[styles.textList, sobrepeso]}>{Tabela().adultos.sobrepeso.valor}</Text>}</View>
 
-        <View style={styles.speedResultText}>{idade < 16 ? <Text style={[styles.textList, grauUm]}>{Tabela(imc)[genero][idade].grauUm.texto}</Text> : <Text style={[styles.textList, grauUm]}>{Tabela(imc).adultos.grauUm.texto}</Text>} 
-        {idade < 16 ? <Text style={[styles.textList, grauUm]}>{Tabela(imc)[genero][idade].grauUm.valor}</Text> : <Text style={[styles.textList, grauUm]}>{Tabela(imc).adultos.grauUm.valor}</Text>}</View>
+        <View style={styles.speedResultText}>{idade < 16 ? <Text style={[styles.textList, grauUm]}>{Tabela()[genero][idade].grauUm.texto}</Text> : <Text style={[styles.textList, grauUm]}>{Tabela().adultos.grauUm.texto}</Text>} 
+        {idade < 16 ? <Text style={[styles.textList, grauUm]}>{Tabela()[genero][idade].grauUm.valor}</Text> : <Text style={[styles.textList, grauUm]}>{Tabela().adultos.grauUm.valor}</Text>}</View>
 
-        <View style={styles.speedResultText}>{idade < 16 ? null : <Text style={[styles.textList, grauDois]}>{Tabela(imc).adultos.grauDois.texto}</Text>} 
-        {idade < 16 ? null : <Text style={[styles.textList, grauDois]}>{Tabela(imc).adultos.grauDois.valor}</Text>}</View>
+        <View style={styles.speedResultText}>{idade < 16 ? null : <Text style={[styles.textList, grauDois]}>{Tabela().adultos.grauDois.texto}</Text>} 
+        {idade < 16 ? null : <Text style={[styles.textList, grauDois]}>{Tabela().adultos.grauDois.valor}</Text>}</View>
 
-        <View style={styles.speedResultText}>{idade < 16 ? null : <Text style={[styles.textList, grauTres]}>{Tabela(imc).adultos.grauTres.texto}</Text>} 
-        {idade < 16 ? null : <Text style={[styles.textList, grauTres]}>{Tabela(imc).adultos.grauTres.valor}</Text>}</View>
+        <View style={styles.speedResultText}>{idade < 16 ? null : <Text style={[styles.textList, grauTres]}>{Tabela().adultos.grauTres.texto}</Text>} 
+        {idade < 16 ? null : <Text style={[styles.textList, grauTres]}>{Tabela().adultos.grauTres.valor}</Text>}</View>
 
     </View>    
   )

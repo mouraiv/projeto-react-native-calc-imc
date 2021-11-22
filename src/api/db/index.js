@@ -1,4 +1,4 @@
-export const Tabela = (result) => {
+export const Tabela = (result, altura) => {
 
     const data = {
   
@@ -242,7 +242,7 @@ export const Tabela = (result) => {
             valor: '25.0 - 29.9',
             color:'rgb(255, 140, 0)', 
             fontWeight:'bold',
-            normal: 90.0,
+            normal: (190-100)-((190-150)/2),
             faixa: '66.7 - 90.0 kg',
             condicao: result > 24.9 && result < 30.0
           },
@@ -275,8 +275,7 @@ export const Tabela = (result) => {
             valor: '40.0 ≥',
             color:'rgb(255, 0, 0)', 
             fontWeight:'bold',
-            normal: 90.0,
-            faixa: '66.7 - 90.0 kg',
+            
             condicao: result > 39.9
           }
         }

@@ -10,8 +10,8 @@ import Svg, { Path, Text as SvgText, G } from 'react-native-svg'
 import { ValidContext } from '../../context/'
 import { Validate } from '../../api/interface/'
 
-function Ratio({imc,idade, genero, peso}){
-    const { state: {value, categoria}, dispatch } = useContext(ValidContext)
+function Ratio({imc,idade, genero, altura, peso}){
+    const { state: {value}, dispatch } = useContext(ValidContext)
 
     let rotateAnimed = new Animated.Value(0)
 
@@ -23,7 +23,7 @@ function Ratio({imc,idade, genero, peso}){
         easing: Easing.linear,
         useNativeDriver: false
       }).start(({finished})=>{
-              Validate(imc, idade, genero, peso, dispatch, finished)
+              Validate(imc, idade, genero, null, null, dispatch, finished)
       
       })
     }
